@@ -17,6 +17,7 @@ import handleRender from './renderer';
 import Broadcaster from './broadcaster';
 
 import HeapGraph from './heapGraph';
+import TempGraph from './tempGraph';
 
 const broadcaster = new Broadcaster();
 
@@ -63,6 +64,9 @@ function start(configuration) {
   const heapGraph = new HeapGraph(broadcaster);
   heapGraph.monitor();
 
+  const tempGraph = new TempGraph(broadcaster);
+  tempGraph.monitor
+
   const preloadedState = () => ({
     testEnvs: testEnvs.getState(),
     production: production.getState(),
@@ -70,6 +74,7 @@ function start(configuration) {
     kitchenSink: dashboardConfig.kitchenSink,
     graphs: {
       heapGraph: heapGraph.getState(),
+      tempGraph: tempGraph.getState(),
     },
     title: dashboardConfig.title,
   });
